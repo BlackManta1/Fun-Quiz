@@ -23,7 +23,12 @@ class QuizzViewController: UIViewController {
     @IBOutlet weak var popUpView: PopUpView!
     @IBOutlet weak var imageSolution: UIImageView!
     @IBOutlet weak var expliSolution: UILabel!
+    @IBOutlet weak var scorePopPu: UILabel!
     @IBOutlet weak var buttonPopUp1: PropositionButton!
+    
+    // timer
+    @IBOutlet weak var TimerLabel: UILabel!
+    var myTimer = Timer()
     
     var questions = [Question]()
     var questionAsk: Question?
@@ -44,7 +49,36 @@ class QuizzViewController: UIViewController {
         questions = self.LoadQuestion()
         // replissage des questions
         self.fillQuizViewController()
+        
+        // lancer le timer
+        
+        
+        
     }
+    
+    @objc func processTimer(){
+        
+        if let testTimerLabelString = TimerLabel.text{
+            if let testTimerLabelInt = Int(testTimerLabelString){
+                
+                let newTime = testTimerLabelInt - 1
+                
+                if newTime == 0{
+                    myTimer.invalidate()
+                    showMePopUp(gagne: false, imgAsset: UIImage(named: "timer")!, expliQuest: "Temps ecoule ! C'est perdu !")
+                }else{
+                    TimerLabel.text = String(newTime)
+                }
+
+            }
+        }
+        
+        
+        
+    }
+    
+    
+    
     
     func LoadQuestion()->[Question]{
         var myQuestions = [Question]()
@@ -84,12 +118,23 @@ class QuizzViewController: UIViewController {
             
         currentQuestion = currentQuestion + 1
         }else{
-            self.backToNavigationControler()
             // bravo tu es un grand gagnant
+            score = questions.count
+            self.sauvegardeBestScore(ScoreActu: self.score)
+            self.backToNavigationControler()
+            // il faudra cree un pop up gagnant
         }
+        
+        // des  quon a terminer de remplir les questions on lance le chrono
+        TimerLabel.text = "30"
+        myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(QuizzViewController.processTimer), userInfo: nil, repeats: true)
+        
     }
     
     @IBAction func ClickOnProposition(_ sender: Any) {
+        
+        // des que le gars, clicke sur une proposition on arrete le timer
+        myTimer.invalidate()
         
         // je dois ici verifier le tag
         if let testQuest = self.questionAsk, let bouton = sender as? UIButton{
@@ -97,7 +142,7 @@ class QuizzViewController: UIViewController {
                 // bonne reponse
                 gagne = true
                 score = score + 1 // je mettrai le score dans le pop up
-                
+                self.sauvegardeBestScore(ScoreActu: self.score)
                 showMePopUp(gagne: gagne, imgAsset: questions[currentQuestion-1].imageResponse, expliQuest: questions[currentQuestion-1].explicationResponse)
                 
             }else{
@@ -105,6 +150,7 @@ class QuizzViewController: UIViewController {
                 // show the pop up
                 gagne = false
                 //self.backToNavigationControler()
+                self.sauvegardeBestScore(ScoreActu: self.score)
                 showMePopUp(gagne: gagne, imgAsset: UIImage(named: "nelson")!, expliQuest: "Pour avoir l'explication faut gagner, looser !")
             }
             
@@ -131,11 +177,15 @@ class QuizzViewController: UIViewController {
         if gagne {
             typeDeResponse.text = "Bonne reponse"
             buttonPopUp1.setTitle("Continuer", for: .normal)
+            
         }else{
             typeDeResponse.text = "Mauvaise reponse"
             typeDeResponse.backgroundColor = UIColor.red
             buttonPopUp1.setTitle("Quitter", for: .normal)
         }
+        
+        // jaffiche le score
+        scorePopPu.text = "Score : " + String(score) + "/" + String(questions.count)
         
     }
     
@@ -166,6 +216,14 @@ class QuizzViewController: UIViewController {
             // visible
             BackView.alpha = 1
             popUpView.alpha = 1
+        }
+    }
+    
+    func sauvegardeBestScore(ScoreActu:Int){
+        let userScore = UserDefaults.standard.integer(forKey: "score")
+        if ScoreActu > userScore {
+            UserDefaults.standard.set(ScoreActu, forKey: "score")
+            UserDefaults.standard.synchronize()
         }
     }
 
