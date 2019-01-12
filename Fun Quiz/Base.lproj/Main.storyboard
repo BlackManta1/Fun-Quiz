@@ -206,7 +206,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="201" id="3dE-lm-27n"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -226,12 +226,12 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explication" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zT-bk-L4x">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explication" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zT-bk-L4x">
                                                 <rect key="frame" x="0.0" y="245" width="240" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="whj-3u-q8N"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -324,6 +324,7 @@
                         <outlet property="expliSolution" destination="6zT-bk-L4x" id="aYT-QJ-jNz"/>
                         <outlet property="imageSolution" destination="oRh-Nk-b2p" id="RZk-Je-Xqh"/>
                         <outlet property="myQuestion" destination="SOf-gl-dvP" id="Fwm-df-6Dw"/>
+                        <outlet property="nbLifeLabel" destination="mbv-k6-lAh" id="2tw-Ih-8cX"/>
                         <outlet property="popUpView" destination="U2S-tM-zYU" id="Q90-Eu-gTF"/>
                         <outlet property="scorePopPu" destination="j2O-kY-WVZ" id="xMg-kD-1lN"/>
                         <outlet property="themeLabel" destination="uZX-Ka-3Sz" id="0fJ-o8-mDk"/>
