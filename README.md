@@ -11,3 +11,5 @@ L'Application mobile est disponible sur l'App Store via le lien suivant : [Click
 Le code n'est pas encore ultra optimisé, en effet il s'agisait de mon premier projet Xcode publié.
 Si j'ai le temps, je reviendrai ré-écrire l'application. 
 
+> Copyright © 2019 Saliou DJALO. All rights reserved.
+
