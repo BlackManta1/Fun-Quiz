@@ -6,7 +6,7 @@ Il s'agit d'un quiz mobile où le but est de répondre à des questions amusante
 L'idée principale c'est de te faire passer un bon moment.
 Les thèmes des questions sont variées : Sport, Alimentation, Musique, Cinéma, etc...
 
-L'Application mobile est disponible sur l'App Store via le lien suivant : [Click here](https://itunes.apple.com/fr/app/fun-quiz/id1449412667?mt=8).
+L'Application mobile est disponible sur l'App Store via le lien suivant : [Click here](https://itunes.apple.com/fr/app/fun-quiz/id1449412667?mt=8). <br />
 Les CGU et les mentions légales sont disponibles via ce page : [Click here](https://sites.google.com/view/funquiz/homepage).
 
 ## Notes :
